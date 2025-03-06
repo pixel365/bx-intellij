@@ -32,5 +32,8 @@
                 groupName="YAML inspections"
                 enabledByDefault="true"
                 displayName="BX config inspection"/>
+        <completion.contributor
+                language="yaml"
+                implementationClass="com.github.pixel365.bxintellij.YamlCompletionContributor"/>
     </extensions>
 </idea-plugin>
