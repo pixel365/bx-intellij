@@ -19,6 +19,7 @@ class YamlConfigInspection : LocalInspectionTool() {
         isOnTheFly: Boolean
     ): Array<out ProblemDescriptor?>? {
         if (file !is YAMLFile) return emptyArray()
+        if (!file.virtualFile.path.contains("/.bx/")) return emptyArray()
 
         val root = file.documents.firstOrNull()?.topLevelValue as? YAMLMapping ?: return emptyArray()
         val requiredKeys = listOf("name", "version", "account", "buildDirectory", "logDirectory", "stages" )
@@ -50,7 +51,6 @@ class YamlConfigInspection : LocalInspectionTool() {
         override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
             val file = descriptor.psiElement.containingFile as? YAMLFile ?: return
             val root = file.documents.firstOrNull()?.topLevelValue as? YAMLMapping ?: return
-
             val newKeyValue = createYAMLKeyValue(key, "", project)
 
             if (newKeyValue == null) return
