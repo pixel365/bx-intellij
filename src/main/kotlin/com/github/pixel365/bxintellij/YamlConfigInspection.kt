@@ -13,6 +13,16 @@ import org.jetbrains.yaml.psi.YAMLKeyValue
 import org.jetbrains.yaml.psi.YAMLMapping
 
 class YamlConfigInspection : LocalInspectionTool() {
+    private val requiredKeys = listOf(
+        "name",
+        "version",
+        "account",
+        "buildDirectory",
+        "logDirectory",
+        "stages",
+        "builds"
+    )
+
     override fun checkFile(
         file: PsiFile,
         manager: InspectionManager,
@@ -22,7 +32,6 @@ class YamlConfigInspection : LocalInspectionTool() {
         if (!file.virtualFile.path.contains("/.bx/")) return emptyArray()
 
         val root = file.documents.firstOrNull()?.topLevelValue as? YAMLMapping ?: return emptyArray()
-        val requiredKeys = listOf("name", "version", "account", "buildDirectory", "logDirectory", "stages" )
         val problems = mutableListOf<ProblemDescriptor>()
 
         requiredKeys.forEach { key ->
@@ -30,7 +39,7 @@ class YamlConfigInspection : LocalInspectionTool() {
                val problem = manager.createProblemDescriptor(
                    file,
                    TextRange(0, file.textLength),
-                   "YAML key '$key' does not exist",
+                   "Required key '$key' does not exist",
                    ProblemHighlightType.WARNING,
                    true,
                    MissingKeyFix(key)
@@ -45,7 +54,7 @@ class YamlConfigInspection : LocalInspectionTool() {
     private class MissingKeyFix(private val key: String) : LocalQuickFix {
 
         override fun getFamilyName(): String {
-            return "Add missing YAML key"
+            return "Add missing key"
         }
 
         override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
