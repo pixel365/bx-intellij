@@ -18,7 +18,6 @@ class YamlConfigInspection : LocalInspectionTool() {
         "version",
         "account",
         "buildDirectory",
-        "logDirectory",
         "stages",
         "builds"
     )
