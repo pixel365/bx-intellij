@@ -12,7 +12,7 @@ import org.jetbrains.yaml.psi.YAMLFile
 import org.jetbrains.yaml.psi.YAMLKeyValue
 import org.jetbrains.yaml.psi.YAMLMapping
 
-class YamlConfigInspection : LocalInspectionTool() {
+class RootInspection : LocalInspectionTool() {
     private val requiredKeys = listOf(
         "name",
         "version",

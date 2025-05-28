@@ -27,13 +27,13 @@
     <extensions defaultExtensionNs="com.intellij">
         <localInspection
                 language="yaml"
-                implementationClass="com.github.pixel365.bxintellij.YamlConfigInspection"
+                implementationClass="com.github.pixel365.bxintellij.RootInspection"
                 shortName="YamlConfigInspection"
                 groupName="YAML inspections"
                 enabledByDefault="true"
                 displayName="BX config inspection"/>
         <completion.contributor
                 language="yaml"
-                implementationClass="com.github.pixel365.bxintellij.YamlCompletionContributor"/>
+                implementationClass="com.github.pixel365.bxintellij.RootCompletionContributor"/>
     </extensions>
 </idea-plugin>

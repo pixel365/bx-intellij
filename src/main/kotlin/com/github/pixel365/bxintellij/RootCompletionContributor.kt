@@ -7,7 +7,7 @@ import com.intellij.codeInsight.completion.CompletionType
 import com.intellij.patterns.PlatformPatterns
 import org.jetbrains.yaml.psi.YAMLMapping
 
-class YamlCompletionContributor : CompletionContributor() {
+class RootCompletionContributor : CompletionContributor() {
     init {
         extend(
             CompletionType.BASIC,
