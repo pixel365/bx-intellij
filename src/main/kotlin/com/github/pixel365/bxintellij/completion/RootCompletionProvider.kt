@@ -13,12 +13,14 @@ import org.jetbrains.yaml.psi.YAMLMapping
 
 class RootCompletionProvider : CompletionProvider<CompletionParameters>() {
     private val rootKeys = listOf(
+        // main fields
         "name",
         "version",
         "label",
         "account",
         "buildDirectory",
         "repository",
+
         "variables",
         "changelog",
         "stages",
