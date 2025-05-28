@@ -18,7 +18,6 @@ class RootCompletionProvider : CompletionProvider<CompletionParameters>() {
         "label",
         "account",
         "buildDirectory",
-        "logDirectory",
         "repository",
         "variables",
         "changelog",
@@ -26,7 +25,8 @@ class RootCompletionProvider : CompletionProvider<CompletionParameters>() {
         "callbacks",
         "builds",
         "run",
-        "ignore"
+        "ignore",
+        "log"
     )
 
     override fun addCompletions(
